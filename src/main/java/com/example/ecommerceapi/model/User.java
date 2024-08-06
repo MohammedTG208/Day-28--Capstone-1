@@ -24,5 +24,6 @@ public class User {
     private String role;
     @Positive(message = "balance must not be empty, have to be positive")
     private double balance;
+    private ArrayList<Product> productsCart;
 
 }
