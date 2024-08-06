@@ -119,4 +119,19 @@ public class UserController {
         }
         return ResponseEntity.status(200).body(userService.getWishList(uid));
     }
+
+    @PostMapping("/add/to/cart/{pid}/{uid}")
+    public ResponseEntity addToCart(@PathVariable int pid,@PathVariable int uid) {
+        if (userService.addToCart(pid,uid)) {
+            return ResponseEntity.status(200).body("You added to cart successfully");
+        }
+        return ResponseEntity.status(400).body("Check your input and try again");
+    }
+    @DeleteMapping("/delete/from/cart/{pid}/{uid}")
+    public ResponseEntity deleteFromCart(@PathVariable int pid,@PathVariable int uid) {
+        if (userService.addToCart(pid,uid)) {
+            return ResponseEntity.status(200).body("You delete cart successfully");
+        }
+        return ResponseEntity.status(400).body("Check your input and try again");
+    }
 }
