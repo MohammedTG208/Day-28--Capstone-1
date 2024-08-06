@@ -194,4 +194,30 @@ public class UserService {
         merchantService.getAllMerchants().remove(mIndex);
         productService.getProducts().remove(pIndex);
     }
+    public boolean addToCart(int pID,int uID){
+        for (User user : users) {
+            if (user.getId() == uID) {
+                for (int j = 0; j < productService.getProducts().size(); j++) {
+                    if (productService.getProducts().get(j).getId() == pID) {
+                        user.getProductsCart().add(productService.products.get(j));
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public boolean removeCart(int pID,int uID){
+        for (User user : users) {
+            if (user.getId() == uID) {
+                for (int j = 0; j < productService.getProducts().size(); j++) {
+                    if (productService.getProducts().get(j).getId() == pID) {
+                        user.getProductsCart().remove(productService.products.get(j));
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
